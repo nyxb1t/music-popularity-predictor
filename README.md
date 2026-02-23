@@ -53,3 +53,8 @@ Real-world success depends on marketing, fame, timing, and cultural impact.
 
 ### Prediction Page
 ![Prediction Page](assets/predict.png)
+
+---
+
+## Live Demo
+🔗 https://music-popularity-predictor-0xc5.onrender.com

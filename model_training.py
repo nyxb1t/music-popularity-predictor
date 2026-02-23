@@ -43,12 +43,17 @@ X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 # %%
 model = RandomForestRegressor(
-    n_estimators=100,
+    n_estimators=60,
+    max_depth=18,
+    min_samples_split=5,
+    min_samples_leaf=2,
     random_state=42,
     n_jobs=-1
 )
 
-model.fit(X_train_scaled, y_train)
+model.fit(X_train_scaled, y_train)  # ← THIS WAS MISSING
+
+y_pred = model.predict(X_test_scaled)
 # %%
 y_pred = model.predict(X_test_scaled)
 
@@ -82,8 +87,8 @@ with open("scaler.pkl", "wb") as f:
 # %%
 import joblib
 
-joblib.dump(model, "model.pkl")
-joblib.dump(scaler, "scaler.pkl")
+joblib.dump(model, "model.pkl", compress=3)
+joblib.dump(scaler, "scaler.pkl", compress=3)
 
 # %%
 df["popularity"].describe()
